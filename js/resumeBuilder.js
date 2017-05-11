@@ -70,15 +70,9 @@ bio.display = function() {
     $("#header").prepend(HTMLheaderRole.replace('%data%', bio.role));
     $("#header").prepend(HTMLheaderName.replace('%data%', bio.name));
 
+    $("#topContacts, #footerContacts").append(HTMLmobile.replace('%data%', bio.contacts.mobile), HTMLemail.replace('%data%', bio.contacts.email), HTMLgithub.replace('%data%', bio.contacts.github), HTMLlocation.replace('%data%', bio.contacts.location));
+    
     $("#topContacts").append(HTMLmobile.replace('%data%', bio.contacts.mobile));
-    $("#topContacts").append(HTMLemail.replace('%data%', bio.contacts.email));
-    $("#topContacts").append(HTMLgithub.replace('%data%', bio.contacts.github));
-    $("#topContacts").append(HTMLlocation.replace('%data%', bio.contacts.location));
-
-    $("#footerContacts").append(HTMLmobile.replace('%data%', bio.contacts.mobile));
-    $("#footerContacts").append(HTMLemail.replace('%data%', bio.contacts.email));
-    $("#footerContacts").append(HTMLgithub.replace('%data%', bio.contacts.github));
-    $("#footerContacts").append(HTMLlocation.replace('%data%', bio.contacts.location));
 
     $("#header").append(HTMLbioPic.replace('%data%', bio.biopic));
     $("#header").append(HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage));
@@ -98,25 +92,25 @@ education.display = function() {
     education.schools.forEach(function(school) {
         $("#education").append(HTMLschoolStart);
 
-        $(".education-entry:last").append(HTMLschoolName.replace('%data%', school.name).replace('%url%', school.url));
+        $(".education-entry:last").append(HTMLschoolName.replace('%data%', school.name).replace('%url%', school.url) + HTMLschoolDegree.replace('%data%', school.degree));
         $(".education-entry:last").append(HTMLschoolLocation.replace('%data%', school.location));
         $(".education-entry:last").append(HTMLschoolDates.replace('%data%', school.dates));
-        $(".education-entry:last").append(HTMLschoolDegree.replace('%data%', school.degree));
         school.majors.forEach(function(major) {
             $(".education-entry:last").append(HTMLschoolMajor.replace('%data%', major));
         });
+        $(".education-entry:last").append('<br>');
     });
 
     if (education.onlineCourses.length > 0) {
-        $("#education").append('<h3>Online Coureses</h3>');
+        $("#education").append(HTMLonlineClasses);
     }
 
     education.onlineCourses.forEach(function(course) {
         $("#education").append(HTMLschoolStart);
 
-        $(".education-entry:last").append(HTMLonlineTitle.replace('%data%', course.title).replace('%url%', course.url));
-        $(".education-entry:last").append(HTMLonlineSchool.replace('%data%', course.school));
+        $(".education-entry:last").append(HTMLonlineTitle.replace('%data%', course.title).replace('%url%', course.url) + HTMLonlineSchool.replace('%data%', course.school));
         $(".education-entry:last").append(HTMLonlineDates.replace('%data%', course.dates));
+        $(".education-entry:last").append('<br>');
     });
 };
 
