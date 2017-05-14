@@ -71,8 +71,6 @@ bio.display = function() {
     $("#header").prepend(HTMLheaderName.replace('%data%', bio.name));
 
     $("#topContacts, #footerContacts").append(HTMLmobile.replace('%data%', bio.contacts.mobile), HTMLemail.replace('%data%', bio.contacts.email), HTMLgithub.replace('%data%', bio.contacts.github), HTMLlocation.replace('%data%', bio.contacts.location));
-    
-    $("#topContacts").append(HTMLmobile.replace('%data%', bio.contacts.mobile));
 
     $("#header").append(HTMLbioPic.replace('%data%', bio.biopic));
     $("#header").append(HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage));
@@ -85,8 +83,6 @@ bio.display = function() {
         });
     }
 };
-
-bio.display();
 
 education.display = function() {
     education.schools.forEach(function(school) {
@@ -114,8 +110,6 @@ education.display = function() {
     });
 };
 
-education.display();
-
 work.display = function() {
     work.jobs.forEach(function(job) {
         $("#workExperience").append(HTMLworkStart);
@@ -126,8 +120,6 @@ work.display = function() {
         $(".work-entry:last").append(HTMLworkDescription.replace('%data%', job.description));
     });
 };
-
-work.display();
 
 projects.display = function() {
     projects.projects.forEach(function(project) {
@@ -143,6 +135,9 @@ projects.display = function() {
     });
 };
 
+bio.display();
+education.display();
+work.display();
 projects.display();
 
 $("#mapDiv").append(googleMap);
